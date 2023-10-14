@@ -38,6 +38,9 @@ tqdm = "^4.65.0"
 pylint-pydantic = "^0.2.4"
 pydeps = "^1.12.17"
 pytest = "^7.3.1"
+gradio = "^3.47.1"
+openai = "^0.28.1"
+langchain = "^0.0.314"
 
 
 [build-system]
