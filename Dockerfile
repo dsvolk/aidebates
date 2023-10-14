@@ -13,8 +13,7 @@ COPY . /app
 RUN pip install -U pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make the port 8000 available to the world outside this container
-EXPOSE 8000
+EXPOSE 7860
 
 # Run the command to start the bot
 CMD ["python", "src/app.py"]
