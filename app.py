@@ -1,12 +1,7 @@
 import gradio as gr
 
+from src.config import GlobalConfig
 from src.debates.round import DebateRound
-
-MOTIONS = [
-    "This house would ban the use of facial recognition technology",
-    "This house believes that we should privatize the prison system",
-    "Parliament members should be appointed by a lottery among the general population",
-]
 
 
 def run_debate(motion, gov_args, opp_args):
@@ -22,7 +17,21 @@ def run_debate(motion, gov_args, opp_args):
 
 
 with gr.Blocks() as app:
-    motion_dd = gr.Dropdown(choices=MOTIONS, type="value", allow_custom_value=True, label="Motion")
+    with gr.Accordion("Prompts", open=False):
+        gov_prompt_template_tb = gr.Textbox(
+            lines=5,
+            value="""In parliament debates, you are the government and I am the opposition. You are arguing for the motion: {gov_motion}. Your reasons are:""",
+            placeholder="Enter government prompt template here...",
+            label="Government prompt template",
+        )
+        opp_prompt_template_tb = gr.Textbox(
+            lines=5,
+            value="""In parliament debates, you are the opposition and I am the government. You are arguing against the motion: {opp_motion}. Your reasons are:""",
+            placeholder="Enter opposition prompt template here...",
+            label="Opposition prompt template",
+        )
+
+    motion_dd = gr.Dropdown(choices=GlobalConfig.SAMPLE_MOTIONS, type="value", allow_custom_value=True, label="Motion")
     gov_args_tb = gr.Textbox(lines=5, placeholder="Enter government arguments here...", label="Government arguments")
     opp_args_tb = gr.Textbox(lines=5, placeholder="Enter opposition arguments here...", label="Opposition arguments")
     start_btn = gr.Button(value="Start debate")

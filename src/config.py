@@ -11,3 +11,9 @@ class GlobalConfig:
     assert isinstance(DEBUG, bool)
 
     LLM_TEMPERATURE: float = float(os.getenv("LLM_TEMPERATURE", "0.7"))
+
+    SAMPLE_MOTIONS = [
+        "This house would ban the use of facial recognition technology",
+        "This house believes that we should privatize the prison system",
+        "Parliament members should be appointed by a lottery among the general population",
+    ]
