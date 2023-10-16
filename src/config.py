@@ -10,6 +10,7 @@ class GlobalConfig:
     DEBUG: bool = os.getenv("DEBUG", "false") == "true"
     assert isinstance(DEBUG, bool)
 
+    LLM_MODEL_NAMES = ["gpt-3.5-turbo", "gpt-4"]
     LLM_TEMPERATURE: float = float(os.getenv("LLM_TEMPERATURE", "0.7"))
 
     SAMPLE_MOTIONS = [
@@ -17,6 +18,22 @@ class GlobalConfig:
         "This house believes that we should privatize the prison system",
         "Parliament members should be appointed by a lottery among the general population",
     ]
+
+    GOV_PROMPT_TEMPLATE = """In parliament debates, you are the government and I am the opposition. You are arguing for the motion: {motion}. Your arguments are:
+
+- It's good for the economy
+- It's good for the environment
+- It's good for the people
+
+Be emotional and dramatic. Be sure to address the opposition's points in your speech."""
+
+    OPP_PROMPT_TEMPLATE = """In parliament debates, you are the opposition and I am the government. You are arguing against the motion: {motion}. Your arguments are:
+
+- It's bad for the economy
+- It's bad for the environment
+- It's bad for the people
+
+Be calm and logical. Be sure to address the opposition's points in your speech."""
 
     GOV_AVATAR_PATH = "images/gov_avatar.png"
     OPP_AVATAR_PATH = "images/opp_avatar.png"
