@@ -17,7 +17,7 @@ COPY . /app
 RUN pip install -U pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE ${GRADIO_SERVER_PORT}
+EXPOSE 7860
 
 # Run the command to start the bot
 CMD ["python", "/app/src/app.py"]
