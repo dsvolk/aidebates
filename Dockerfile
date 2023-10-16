@@ -1,6 +1,6 @@
 FROM python:3.10-slim
 
-LABEL maintainer="Denis Volk <denis.volk@toptal.com>"
+LABEL maintainer="Denis Volk <the.denis.volk@gmail.com>"
 
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 
