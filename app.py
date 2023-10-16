@@ -17,16 +17,26 @@ def run_debate(motion, gov_args, opp_args):
 
 
 with gr.Blocks() as app:
-    with gr.Accordion("Prompts", open=False):
+    with gr.Accordion("Prompts", open=True):
+        model_name_dd = gr.Dropdown(
+            choices=["gpt-3.5-turbo", "gpt-4"],
+            value="gpt-3.5-turbo",
+            interactive=True,
+            type="value",
+            allow_custom_value=False,
+            label="Model name",
+        )
         gov_prompt_template_tb = gr.Textbox(
             lines=5,
             value="""In parliament debates, you are the government and I am the opposition. You are arguing for the motion: {gov_motion}. Your reasons are:""",
+            interactive=True,
             placeholder="Enter government prompt template here...",
             label="Government prompt template",
         )
         opp_prompt_template_tb = gr.Textbox(
             lines=5,
             value="""In parliament debates, you are the opposition and I am the government. You are arguing against the motion: {opp_motion}. Your reasons are:""",
+            interactive=True,
             placeholder="Enter opposition prompt template here...",
             label="Opposition prompt template",
         )
