@@ -8,7 +8,7 @@ from langchain.prompts import ChatPromptTemplate
 from .callbacks import QueueCallback
 
 
-def stream(input_text) -> Generator:
+def stream() -> Generator:
     q: Queue = Queue()
     job_done = object()
 
