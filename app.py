@@ -51,14 +51,14 @@ with gr.Blocks() as app:
                 placeholder="Enter opposition prompt here...",
                 label="Opposition prompt",
             )
-        with gr.Column(scale=1, min_width=600):
+        with gr.Column(scale=1, min_width=200):
             model_name_dd = gr.Dropdown(
                 choices=GlobalConfig.LLM_MODEL_NAMES,
                 value=GlobalConfig.LLM_MODEL_NAMES[0],
                 interactive=True,
                 type="value",
                 allow_custom_value=False,
-                label="Model name",
+                label="Large Language Model",
             )
             temperature_slider = gr.Slider(
                 minimum=0.0,
