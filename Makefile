@@ -22,7 +22,7 @@ env:
 
 ## Run OkGPT bot
 run:
-	poetry run python -m src.app
+	poetry run python -m app
 
 r: run
 
