@@ -2,13 +2,12 @@ from typing import Dict
 
 from langchain.memory import ChatMessageHistory
 from langchain.prompts import ChatPromptTemplate
-from langchain.prompts.chat import SystemMessage
 
 from src.gradio import stream
 
 
 def _make_prompt_template(prompt: str, history: ChatMessageHistory) -> ChatPromptTemplate:
-    return ChatPromptTemplate.from_messages([SystemMessage(content=prompt)] + history.messages)  # type: ignore
+    return ChatPromptTemplate.from_messages([("system", prompt)] + history.messages)  # type: ignore
 
 
 class DebateRound:

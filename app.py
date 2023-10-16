@@ -3,21 +3,25 @@ from src.config import GlobalConfig
 from src.debates.round import DebateRound
 
 
-def stream_debate(motion, gov_prompt, opp_prompt, model_name):
+def stream_debate(motion, gov_prompt, opp_prompt, model_name, temperature):
     llm_params = {
         "model": model_name,
-        "temperature": GlobalConfig.LLM_TEMPERATURE,
+        "temperature": temperature,
         "streaming": True,
     }
     dround = DebateRound(motion, gov_prompt, opp_prompt, llm_params)
 
-    for content in dround.gov_speech():
-        yield [[content, None]]
+    history = []
+    for _ in range(4):
+        for content in dround.gov_speech():
+            yield history + [[content, None]]
 
-    saved_content = content
+        saved_content = content
 
-    for content in dround.opp_speech():
-        yield [[saved_content, content]]
+        for content in dround.opp_speech():
+            yield history + [[saved_content, content]]
+
+        history.append([saved_content, content])
 
 
 with gr.Blocks() as app:
@@ -56,14 +60,29 @@ with gr.Blocks() as app:
                 allow_custom_value=False,
                 label="Model name",
             )
+            temperature_slider = gr.Slider(
+                minimum=0.0,
+                maximum=1.0,
+                step=0.1,
+                value=GlobalConfig.LLM_TEMPERATURE,
+                interactive=True,
+                label="Model temperature",
+            )
 
     start_btn = gr.Button(value="Start debate")
 
     chatbot = gr.Chatbot(
-        avatar_images=(GlobalConfig.GOV_AVATAR_PATH, GlobalConfig.OPP_AVATAR_PATH), show_copy_button=True
+        show_label=False,
+        avatar_images=(GlobalConfig.GOV_AVATAR_PATH, GlobalConfig.OPP_AVATAR_PATH),
+        show_copy_button=True,
     )
 
-    start_btn.click(stream_debate, [motion_dd, gov_prompt_tb, opp_prompt_tb, model_name_dd], chatbot, queue=True)
+    start_btn.click(
+        stream_debate,
+        [motion_dd, gov_prompt_tb, opp_prompt_tb, model_name_dd, temperature_slider],
+        chatbot,
+        queue=True,
+    )
 
 
 app.queue().launch()
