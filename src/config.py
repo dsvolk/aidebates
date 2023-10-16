@@ -25,7 +25,7 @@ class GlobalConfig:
 - It's good for the environment
 - It's good for the people
 
-Be emotional and dramatic. Make sure to address the opposition's points in your speech."""
+Be emotional and dramatic. Make sure to rebut the opposition's points in your speech."""
 
     OPP_PROMPT_TEMPLATE = """In parliament debates, you are the opposition and I am the government. You are arguing against the motion: {motion}. Your arguments are:
 
@@ -33,7 +33,7 @@ Be emotional and dramatic. Make sure to address the opposition's points in your 
 - It's bad for the environment
 - It's bad for the people
 
-Be calm and logical. Make sure to address the government's points in your speech."""
+Be calm and logical. Make sure to rebut the government's points in your speech."""
 
     GOV_AVATAR_PATH = "images/gov_avatar.png"
     OPP_AVATAR_PATH = "images/opp_avatar.png"
