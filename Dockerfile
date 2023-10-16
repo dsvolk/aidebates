@@ -7,6 +7,7 @@ LABEL maintainer="Denis Volk <the.denis.volk@gmail.com>"
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 
 ENV GRADIO_SERVER_PORT "${GRADIO_SERVER_PORT}"
+ENV GRADIO_SERVER_NAME "0.0.0.0"
 
 # Copy the rest of the application code into the container at /app
 ENV PYTHONPATH "${PYTHONPATH}:/app"
