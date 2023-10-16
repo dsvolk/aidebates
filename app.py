@@ -32,7 +32,9 @@ with gr.Blocks() as app:
     opp_args_tb = gr.Textbox(lines=5, placeholder="Enter opposition arguments here...", label="Opposition arguments")
     start_btn = gr.Button(value="Start debate")
 
-    chatbot = gr.Chatbot(show_label=True, show_copy_button=True)
+    chatbot = gr.Chatbot(
+        avatar_images=(GlobalConfig.GOV_AVATAR_PATH, GlobalConfig.OPP_AVATAR_PATH), show_copy_button=True
+    )
 
     start_btn.click(stream_debate, None, chatbot, queue=True)
 

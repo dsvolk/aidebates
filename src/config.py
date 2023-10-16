@@ -17,3 +17,6 @@ class GlobalConfig:
         "This house believes that we should privatize the prison system",
         "Parliament members should be appointed by a lottery among the general population",
     ]
+
+    GOV_AVATAR_PATH = "images/gov_avatar.png"
+    OPP_AVATAR_PATH = "images/opp_avatar.png"
