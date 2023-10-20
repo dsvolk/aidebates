@@ -10,6 +10,8 @@ class GlobalConfig:
     DEBUG: bool = os.getenv("DEBUG", "false") == "true"
     assert isinstance(DEBUG, bool)
 
+    N_SPEECHES = 3
+
     LLM_MODEL_NAMES = ["gpt-3.5-turbo", "gpt-4"]
     LLM_TEMPERATURE: float = float(os.getenv("LLM_TEMPERATURE", "0.7"))
 

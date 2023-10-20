@@ -12,7 +12,7 @@ def stream_debate(motion, gov_prompt, opp_prompt, model_name, temperature):
     dround = DebateRound(motion, gov_prompt, opp_prompt, llm_params)
 
     history = []
-    for _ in range(4):
+    for _ in range(GlobalConfig.N_SPEECHES):
         for content in dround.gov_speech():
             yield history + [[content, None]]
 
