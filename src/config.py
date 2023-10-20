@@ -12,7 +12,7 @@ class GlobalConfig:
 
     N_SPEECHES = 3
 
-    LLM_MODEL_NAMES = ["gpt-3.5-turbo", "gpt-4"]
+    LLM_MODEL_NAMES = ["gpt-3.5-turbo-16k", "gpt-4"]
     LLM_TEMPERATURE: float = float(os.getenv("LLM_TEMPERATURE", "0.7"))
 
     SAMPLE_MOTIONS = [
